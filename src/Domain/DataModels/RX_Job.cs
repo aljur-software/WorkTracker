@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Text;
 
 namespace Domain.DataModels
@@ -18,6 +19,9 @@ namespace Domain.DataModels
 		public DateTime? DateDelayed { get; set; }
 		public int? StatusNum { get; set; }
 		public int? RJobID { get; set; }
-		public RX_RoomType Rx_RoomType { get; set; }
-    }
+        public Guid RoomTypeId { get; set; }
+        [ForeignKey("RoomTypeId")]
+        public RX_RoomType Rx_RoomType { get; set; }
+
+	}
 }

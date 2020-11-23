@@ -14,6 +14,12 @@ namespace DataLayer.Repositories
         public RX_JobRepository(RXContext context) : base(context)
         { }
 
+        public async Task<IEnumerable<RX_Job>> GetAllJobsWithRoomTypeAsync()
+        {
+            var result = await Query.Include(t => t.Rx_RoomType).ToListAsync();
+            return result;
+        }
+
         IRX_JobRepository IBaseRepository<Guid, RX_Job, IRX_JobRepository>.NoTrack()
         {
             return base.NoTrack();

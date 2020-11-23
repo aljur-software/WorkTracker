@@ -27,7 +27,7 @@ namespace Services
         {
             IEnumerable<JobVM> jobsVmList = new List<JobVM>();
 
-            var jobs =  await _jobRepository.Reset().ToListAsync();
+            var jobs =  await _jobRepository.Reset().GetAllJobsWithRoomTypeAsync();
 
             if (jobs.Any())
             {
