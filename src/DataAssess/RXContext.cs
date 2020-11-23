@@ -20,20 +20,6 @@ namespace DataLayer
                 Database.ExecuteSqlRaw(InitialScript.CreateRX_RoomTypeInitScript());                
                 Database.ExecuteSqlRaw(InitialScript.InsertRoomTypeInitScript());
                 Database.ExecuteSqlRaw(InitialScript.InsertJobInitScript());
-                /*using (var connection = new SqlConnection(Database.GetConnectionString())) //@"Integrated Security=SSPI;Initial Catalog=mydb;Data Source=localhost;" //Database.GetConnectionString()
-                {
-                    connection.Open();
-                    var command = connection.CreateCommand();
-                    command.CommandText = InitialScript.CreateRX_JobInitScript();
-                    command.ExecuteNonQuery();
-                    command.CommandText = InitialScript.CreateRX_RoomTypeInitScript();
-                    command.ExecuteNonQuery();
-                    command.CommandText = InitialScript.InsertRoomTypeInitScript();
-                    command.ExecuteNonQuery();
-                    command.CommandText = InitialScript.InsertJobInitScript();
-                    command.ExecuteNonQuery();
-
-                }*/
             }
         }
 
