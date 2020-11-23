@@ -7,7 +7,6 @@ using Microsoft.OpenApi.Models;
 using AutoMapper;
 using DataLayer;
 using Services;
-using WebAPIWorkTracker.AutoMapper;
 using Microsoft.EntityFrameworkCore;
 
 namespace WebAPIWorkTracker
@@ -37,9 +36,6 @@ namespace WebAPIWorkTracker
             });
             services.AddServiceLayer();
             services.AddDatalayer();
-
-            services.AddAutoMapper(typeof(JobProfile).Assembly);
-            services.AddAutoMapper(typeof(RoomTypeProfile).Assembly);
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

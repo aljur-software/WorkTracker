@@ -16,8 +16,8 @@ namespace WebAPIWorkTracker.Controllers
         }
 
         [HttpGet]
-        [ProducesResponseType(typeof(GetAllRXJobsQueryResult), StatusCodes.Status200OK)]
-        public async Task<IActionResult> GetAll()
+        [ProducesResponseType(typeof(GetProgressByRoomTypesQueryResult), StatusCodes.Status200OK)]
+        public async Task<IActionResult> GetProgressByRoomTypes()
         {
             var result = await _jobService.GetAllRXJobsQueryHandler();
 

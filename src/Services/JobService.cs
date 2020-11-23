@@ -4,6 +4,7 @@ using System.Threading.Tasks;
 using AutoMapper;
 using Core.Abstractions.Repositories;
 using Core.Abstractions.Services;
+using Domain.DataModels;
 using Domain.Queries;
 using Domain.ViewModels;
 
@@ -12,28 +13,32 @@ namespace Services
     public class JobService : IJobService
     {
         private readonly IRX_JobRepository _jobRepository;
-        private readonly IMapper _mapper;
 
-        public JobService(IRX_JobRepository jobRepository, IMapper mapper)
+        public JobService(IRX_JobRepository jobRepository)
         {
             _jobRepository = jobRepository;
-            _mapper = mapper;
         }
 
-        public async Task<GetAllRXJobsQueryResult> GetAllRXJobsQueryHandler()
+        public async Task<GetProgressByRoomTypesQueryResult> GetAllRXJobsQueryHandler()
         {
-            IEnumerable<JobVM> jobsVmList = new List<JobVM>();
+            IEnumerable<ProgressByRoomTypeVM> roomsByStatusAndType = new List<ProgressByRoomTypeVM>();
 
             var jobs =  await _jobRepository.Reset().GetAllJobsWithRoomTypeAsync();
+            
 
             if (jobs.Any())
             {
-                jobsVmList = _mapper.Map<IEnumerable<JobVM>>(jobs);
+                 roomsByStatusAndType = jobs.GroupBy(_ => new { _.Status, _.Rx_RoomType.Name })
+                    .Select(_ => new ProgressByRoomTypeVM { Status = _.Key.Status, RoomType = _.Key.Name, Count = _.Count() })
+                    .ToList<ProgressByRoomTypeVM>();
             }
-            return new GetAllRXJobsQueryResult()
+            return new GetProgressByRoomTypesQueryResult()
             {
-                Payload = jobsVmList
+                Payload = roomsByStatusAndType
             };
         }
+
+        
     }
+
 }

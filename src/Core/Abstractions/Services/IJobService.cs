@@ -5,6 +5,6 @@ namespace Core.Abstractions.Services
 {
     public interface IJobService
     {
-        Task<GetAllRXJobsQueryResult> GetAllRXJobsQueryHandler();
+        Task<GetProgressByRoomTypesQueryResult> GetAllRXJobsQueryHandler();
     }
 }
