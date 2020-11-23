@@ -1,11 +1,9 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations.Schema;
-using System.Text;
 
 namespace Domain.DataModels
 {
-	public class RX_Job
+    public class RX_Job
 	{
 		public Guid Id { get; set; }
 		public int? ContractorID { get; set; }		
