@@ -1,8 +1,5 @@
-﻿using Domain.DataModels;
-using Domain.ViewModels;
-using System;
+﻿using Domain.ViewModels;
 using System.Collections.Generic;
-using System.Text;
 
 namespace Domain.Queries
 {

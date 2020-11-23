@@ -1,12 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
 using AutoMapper;
 using Core.Abstractions.Repositories;
 using Core.Abstractions.Services;
-using Domain.DataModels;
 using Domain.Queries;
 using Domain.ViewModels;
 
@@ -27,7 +24,7 @@ namespace Services
         {
             IEnumerable<JobVM> jobsVmList = new List<JobVM>();
 
-            var jobs =  await _jobRepository.Reset().ToListAsync();
+            var jobs =  await _jobRepository.Reset().GetAllJobsWithRoomTypeAsync();
 
             if (jobs.Any())
             {
