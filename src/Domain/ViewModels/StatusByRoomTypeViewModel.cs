@@ -1,8 +1,6 @@
-﻿using System;
-
-namespace Domain.ViewModels
+﻿namespace Domain.ViewModels
 {
-    public class ProgressByRoomTypeVM
+    public class StatusByRoomTypeViewModel
     {        
         public string Status { get; set; }
         public string RoomType { get; set; }

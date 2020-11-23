@@ -1,15 +1,12 @@
 ﻿using Domain.DataModels;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
-using System;
-using System.Collections.Generic;
-using System.Text;
 
-namespace Domain.DataModelConfigurations
+namespace DataLayer.DataModelConfigurations
 {
-    public class RX_JobConfiguration
+    public class JobConfiguration
     {
-        public static void JobConfiguration(EntityTypeBuilder<RX_Job> builder)
+        public static void Configuration(EntityTypeBuilder<Job> builder)
         {
             builder.ToTable("RX_Job").HasKey(j => j.Id);
             builder.Property(j => j.Name).HasMaxLength(50);

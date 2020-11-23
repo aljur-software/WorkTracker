@@ -10,10 +10,10 @@ namespace WebAPIWorkTracker
     {
         public static void Main(string[] args)
         {
-            var logger = NLog.Web.NLogBuilder.ConfigureNLog("nlog.config").GetCurrentClassLogger();
+            var logger = NLogBuilder.ConfigureNLog("nlog.config").GetCurrentClassLogger();
             try
             {
-                logger.Debug("init main");
+                logger.Info("init main");
                 CreateHostBuilder(args).Build().Run();
             }
             catch (Exception exception)

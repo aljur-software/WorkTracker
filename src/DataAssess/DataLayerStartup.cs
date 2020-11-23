@@ -8,7 +8,7 @@ namespace DataLayer
     {
         public static void AddDatalayer(this IServiceCollection services)
         {
-            services.AddTransient<IRX_JobRepository, RX_JobRepository>();
+            services.AddTransient<IJobRepository, JobRepository>();
         }
     }
 }

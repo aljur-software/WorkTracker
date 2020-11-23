@@ -1,10 +1,11 @@
-﻿using Domain.Queries;
+﻿using System.Collections.Generic;
 using System.Threading.Tasks;
+using Domain.ViewModels;
 
 namespace Core.Abstractions.Services
 {
     public interface IJobService
     {
-        Task<GetProgressByRoomTypesQueryResult> GetAllRXJobsQueryHandler();
+        Task<IEnumerable<StatusByRoomTypeViewModel>> GetStatusesByRoomType();
     }
 }

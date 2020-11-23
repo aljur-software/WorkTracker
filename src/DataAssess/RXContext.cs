@@ -1,11 +1,9 @@
-﻿using Domain.DataModelConfigurations;
-using Domain.DataModels;
+﻿using Domain.DataModels;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Storage;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using DataLayer.Scripts;
-using System.Threading.Tasks;
-using Microsoft.Data.SqlClient;
+using DataLayer.DataModelConfigurations;
 
 namespace DataLayer
 {
@@ -13,7 +11,7 @@ namespace DataLayer
     {
         public RXContext(DbContextOptions<RXContext> options) : base(options)
         {
-            if (!(this.GetService<IDatabaseCreator>() as RelationalDatabaseCreator).Exists())
+            if (!((RelationalDatabaseCreator) this.GetService<IDatabaseCreator>()).Exists())
             {
                 Database.EnsureCreated();
                 Database.ExecuteSqlRaw(InitialScript.CreateRX_JobInitScript());
@@ -23,13 +21,13 @@ namespace DataLayer
             }
         }
 
-        public DbSet<RX_Job> RXJobs;
-        public DbSet<RX_RoomType> RXRoomTypes;
+        public DbSet<Job> RXJobs;
+        public DbSet<RoomType> RXRoomTypes;
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            modelBuilder.Entity<RX_RoomType>(Rx_RoomTypeConfiguration.RoomTypeConfiguration);
-            modelBuilder.Entity<RX_Job>(RX_JobConfiguration.JobConfiguration);
+            modelBuilder.Entity<RoomType>(RoomTypeConfiguration.Configuration);
+            modelBuilder.Entity<Job>(JobConfiguration.Configuration);
         }
     }
 }

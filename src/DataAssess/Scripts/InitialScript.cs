@@ -52,8 +52,7 @@ namespace DataLayer.Scripts
 			";
 		}
 
-
-		public static string InsertJobInitScript()
+        public static string InsertJobInitScript()
         {
             return @"
 				INSERT [dbo].[RX_Job] ([Id], [ContractorID], [Name], [Status], [Floor], [Room], [DelayReason], [DateCreated], [DateCompleted], [DateDelayed], [StatusNum], [RJobID], [RoomTypeId]) VALUES (newid(),NULL, N'Job1_0_0', N'In Progress', 1, 0, NULL, CAST(N'2017-05-08T13:09:38.900' AS DateTime), NULL, NULL, 3, NULL, N'02a5381a-65ab-40c5-a99e-5c591290a901')

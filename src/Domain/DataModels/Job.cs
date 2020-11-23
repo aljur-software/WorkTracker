@@ -3,7 +3,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Domain.DataModels
 {
-    public class RX_Job
+    public class Job
 	{
 		public Guid Id { get; set; }
 		public int? ContractorID { get; set; }		
@@ -19,7 +19,7 @@ namespace Domain.DataModels
 		public int? RJobID { get; set; }
         public Guid RoomTypeId { get; set; }
         [ForeignKey("RoomTypeId")]
-        public RX_RoomType Rx_RoomType { get; set; }
+        public RoomType Rx_RoomType { get; set; }
 
 	}
 }

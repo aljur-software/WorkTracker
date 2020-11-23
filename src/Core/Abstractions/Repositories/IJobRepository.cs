@@ -5,8 +5,8 @@ using System.Threading.Tasks;
 
 namespace Core.Abstractions.Repositories
 {
-    public interface IRX_JobRepository: IBaseRepository<Guid, RX_Job, IRX_JobRepository>
+    public interface IJobRepository: IBaseRepository<Guid, Job, IJobRepository>
     {
-        Task<IEnumerable<RX_Job>> GetAllJobsWithRoomTypeAsync();
+        Task<IEnumerable<Job>> GetAllJobsWithRoomTypeAsync();
     }
 }

@@ -2,7 +2,7 @@
 
 namespace Domain.DataModels
 {
-    public class RX_RoomType
+    public class RoomType
     {
         public Guid Id { get; set; }
         public string Name { get; set; } 
