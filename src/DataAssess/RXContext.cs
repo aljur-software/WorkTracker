@@ -2,9 +2,10 @@
 using Domain.DataModels;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Storage;
-using System;
-using System.Collections.Generic;
-using System.Text;
+using Microsoft.EntityFrameworkCore.Infrastructure;
+using DataLayer.Scripts;
+using System.Threading.Tasks;
+using Microsoft.Data.SqlClient;
 
 namespace DataLayer
 {
@@ -12,21 +13,28 @@ namespace DataLayer
     {
         public RXContext(DbContextOptions<RXContext> options) : base(options)
         {
-            //Database.EnsureDeleted();
-            Database.EnsureCreated();
-            /*(context.GetService<IDatabaseCreator>() as RelationalDatabaseCreator).Exists()
-
-
-            if (!await RXContext.RXRoomTypes.AnyAsync<RX_RoomType>())
+            if (!(this.GetService<IDatabaseCreator>() as RelationalDatabaseCreator).Exists())
             {
-                await RXContext.RXRoomTypes.ExecuteSqlRawAsync(InitialScript.InsertRoomTypeInitScript());
+                Database.EnsureCreated();
+                Database.ExecuteSqlRaw(InitialScript.CreateRX_JobInitScript());
+                Database.ExecuteSqlRaw(InitialScript.CreateRX_RoomTypeInitScript());                
+                Database.ExecuteSqlRaw(InitialScript.InsertRoomTypeInitScript());
+                Database.ExecuteSqlRaw(InitialScript.InsertJobInitScript());
+                /*using (var connection = new SqlConnection(Database.GetConnectionString())) //@"Integrated Security=SSPI;Initial Catalog=mydb;Data Source=localhost;" //Database.GetConnectionString()
+                {
+                    connection.Open();
+                    var command = connection.CreateCommand();
+                    command.CommandText = InitialScript.CreateRX_JobInitScript();
+                    command.ExecuteNonQuery();
+                    command.CommandText = InitialScript.CreateRX_RoomTypeInitScript();
+                    command.ExecuteNonQuery();
+                    command.CommandText = InitialScript.InsertRoomTypeInitScript();
+                    command.ExecuteNonQuery();
+                    command.CommandText = InitialScript.InsertJobInitScript();
+                    command.ExecuteNonQuery();
+
+                }*/
             }
-
-            if (!await RXContext.RXJobs.AnyAsync<RX_Job>())
-            {
-                await RXContext.RXJobs.ExecuteSqlRawAsync(InitialScript.InsertJobInitScript());
-            }*/
-
         }
 
         public DbSet<RX_Job> RXJobs;
@@ -36,14 +44,6 @@ namespace DataLayer
         {
             modelBuilder.Entity<RX_RoomType>(Rx_RoomTypeConfiguration.RoomTypeConfiguration);
             modelBuilder.Entity<RX_Job>(RX_JobConfiguration.JobConfiguration);
-        }
-
-        public bool Exists()
-        {
-            if (!Database.CanConnect())
-            {
-                
-            }
         }
     }
 }
