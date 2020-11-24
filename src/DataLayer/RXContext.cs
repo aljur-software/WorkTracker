@@ -1,4 +1,8 @@
-﻿using DataLayer.Scripts;
+﻿using Domain.DataModels;
+using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Storage;
+using Microsoft.EntityFrameworkCore.Infrastructure;
+using DataLayer.Scripts;
 using DataLayer.DataModelConfigurations;
 
 namespace DataLayer

@@ -1,4 +1,8 @@
-﻿namespace DataLayer.DataModelConfigurations
+﻿using Domain.DataModels;
+using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Metadata.Builders;
+
+namespace DataLayer.DataModelConfigurations
 {
     public class RoomTypeConfiguration
     {

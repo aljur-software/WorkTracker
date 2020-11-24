@@ -1,4 +1,6 @@
 ﻿using DataLayer.Repositories;
+using DataLayer.Repositories;
+using Microsoft.Extensions.DependencyInjection;
 
 namespace DataLayer
 {
