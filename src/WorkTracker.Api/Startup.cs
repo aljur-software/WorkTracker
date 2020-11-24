@@ -7,7 +7,7 @@ using Microsoft.EntityFrameworkCore;
 using Services;
 using DataLayer;
 
-namespace WorkerTracker.Api
+namespace WorkTracker.Api
 {
     public class Startup
     {

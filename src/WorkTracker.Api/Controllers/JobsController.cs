@@ -5,7 +5,7 @@ using Domain.ViewModels;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 
-namespace WebAPIWorkTracker.Controllers
+namespace WorkTracker.Api.Controllers
 {
     [ApiController]
     [Route("[controller]")]
