@@ -1,4 +1,5 @@
 ﻿using DataLayer.Repositories;
+using Core.Abstractions.Repositories;
 using Microsoft.Extensions.DependencyInjection;
 
 namespace DataLayer
